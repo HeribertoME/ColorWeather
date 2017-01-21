@@ -24,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        style="@style/mainStyle"
         android:text="Partly Cloudy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,10 +33,10 @@
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/imageIcon"
         app:layout_constraintLeft_toLeftOf="@+id/imageIcon"
-        style="@style/mainStyle"
         />
 
     <TextView
+        style="@style/mainStyle"
         android:text="19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +46,6 @@
         app:layout_constraintRight_toRightOf="@+id/tvDescriptionText"
         app:layout_constraintLeft_toLeftOf="@+id/tvDescriptionText"
         android:textSize="54sp"
-        style="@style/mainStyle"
         />
 
     <ImageView
@@ -58,6 +58,7 @@
         android:layout_marginTop="6dp" />
 
     <TextView
+        style="@style/mainStyle"
         android:text="H:19º"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,10 +68,10 @@
         android:layout_marginStart="60dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="60dp"
-        style="@style/mainStyle"
         />
 
     <TextView
+        style="@style/mainStyle"
         android:text="L:12º"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,6 +81,74 @@
         android:layout_marginEnd="60dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="60dp"
-        style="@style/mainStyle"
         />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="119dp"
+        app:layout_constraintGuide_percent="0.33055556" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline2"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6638889"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="239dp" />
+
+    <TextView
+        style="@style/mainStyle"
+        android:text="Daily"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        app:layout_constraintRight_toLeftOf="@+id/guideline"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        style="@style/mainStyle"
+        android:text="Hourly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        app:layout_constraintRight_toLeftOf="@+id/guideline2"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="20sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        style="@style/mainStyle"
+        android:text="Minutely"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline2"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="20sp"
+        android:textStyle="normal|bold" />
 </android.support.constraint.ConstraintLayout>
