@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hmelizarraraz.colorweather.DailyWeatherActivity"
-    android:background="#00D2FF"
+    android:background="@drawable/bg_gradient_blue"
     >
 
     <TextView

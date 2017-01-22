@@ -7,11 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hmelizarraraz.colorweather.MainActivity"
-    android:background="#00D2FF"
+    android:background="@drawable/bg_gradient_blue"
     >
 
     <ImageView
-        android:src="@drawable/rain"
+        android:src="@drawable/na"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageIcon"
@@ -25,7 +25,7 @@
 
     <TextView
         style="@style/mainStyle"
-        android:text="Rain"
+        android:text="Default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvDescriptionText"
@@ -37,7 +37,7 @@
 
     <TextView
         style="@style/mainStyle"
-        android:text="19"
+        android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvCurrentTemp"
@@ -59,7 +59,7 @@
 
     <TextView
         style="@style/mainStyle"
-        android:text="H:19º"
+        android:text="H:0º"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvHighestTemp"
@@ -72,7 +72,7 @@
 
     <TextView
         style="@style/mainStyle"
-        android:text="L:12º"
+        android:text="L:0º"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvLowestTemp"
