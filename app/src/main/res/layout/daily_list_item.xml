@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@drawable/bg_gradient_blue"
+    >
+
+    <TextView
+        style="@style/mainStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDailyListTitle"
+        tools:text="Today"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        style="@style/mainStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDailyListDescription"
+        tools:text="Partly Cloudy in the morning" />
+
+    <TextView
+        style="@style/mainStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDailyListProbability"
+        tools:text="Rain probability 24%"/>
+</LinearLayout>
