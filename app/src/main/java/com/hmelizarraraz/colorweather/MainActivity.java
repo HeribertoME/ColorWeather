@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 import butterknife.BindDrawable;
 import butterknife.BindView;
@@ -180,6 +181,7 @@ public class MainActivity extends Activity {
     private ArrayList<Hour> getHourlyWeatherFromJSON(String response) throws JSONException {
 
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
 
         ArrayList<Hour> hours = new ArrayList<>();
 
