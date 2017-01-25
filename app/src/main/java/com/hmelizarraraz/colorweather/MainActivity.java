@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
     public static final String TIMEZONE = "timezone";
     public static final String DAYS_ARRAY_LIST = "days";
     public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String HOURS_ARRAY_LIST = "hours";
 
     @BindView(R.id.imageIcon)
     ImageView imageIcon;
@@ -65,6 +66,7 @@ public class MainActivity extends Activity {
     Drawable sunny;
 
     ArrayList<Day> days;
+    ArrayList<Hour> hours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +87,8 @@ public class MainActivity extends Activity {
                         try {
                             CurrentWeather currentWeather = getCurrentWeatherFromJSON(response);
                             days = getDailyWeatherFromJSON(response);
-                            ArrayList<Hour> hours = getHourlyWeatherFromJSON(response);
+                            hours = getHourlyWeatherFromJSON(response);
                             ArrayList<Minute> minutes = getMinutelyWeatherFromJSON(response);
-
-                            for (Minute minute : minutes) {
-                                Log.d(TAG, minute.getTitle());
-                                Log.d(TAG, minute.getRainProbability());
-                            }
 
                             imageIcon.setImageDrawable(currentWeather.getIconDrawableResource());
                             tvDescriptionText.setText(currentWeather.getDescription());
@@ -126,6 +123,8 @@ public class MainActivity extends Activity {
     @OnClick(R.id.tvHourly)
     public void hourlyWeatherClick() {
         Intent hourlyActivityIntent = new Intent(MainActivity.this, HourlyWeatherActivity.class);
+
+        hourlyActivityIntent.putParcelableArrayListExtra(HOURS_ARRAY_LIST, hours);
 
         startActivity(hourlyActivityIntent);
     }

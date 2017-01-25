@@ -1,6 +1,7 @@
 package com.hmelizarraraz.colorweather;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -22,16 +23,9 @@ public class HourlyWeatherActivity extends Activity {
         setContentView(R.layout.activity_hourly_weather);
         ButterKnife.bind(this);
 
-        ArrayList<Hour> hours = new ArrayList<>();
+        Intent intent = getIntent();
 
-        for (int i = 0; i<100; i++) {
-            Hour hour = new Hour();
-
-            hour.setHour("12:00");
-            hour.setWeatherDescription("Cloudy position: " + i);
-
-            hours.add(hour);
-        }
+        ArrayList<Hour> hours = intent.getParcelableArrayListExtra(MainActivity.HOURS_ARRAY_LIST);
 
         HourlyWeatherAdapter hourlyWeatherAdapter = new HourlyWeatherAdapter(this, hours);
 
