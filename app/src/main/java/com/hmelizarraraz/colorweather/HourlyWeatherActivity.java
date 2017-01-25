@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.hmelizarraraz.colorweather.Adapters.HourlyWeatherAdapter;
 
@@ -16,6 +17,9 @@ public class HourlyWeatherActivity extends Activity {
 
     @BindView(R.id.hourlyListView)
     ListView hourlyListView;
+
+    @BindView(R.id.tvHourlyNoData)
+    TextView tvHourlyNoData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,5 +34,7 @@ public class HourlyWeatherActivity extends Activity {
         HourlyWeatherAdapter hourlyWeatherAdapter = new HourlyWeatherAdapter(this, hours);
 
         hourlyListView.setAdapter(hourlyWeatherAdapter);
+
+        hourlyListView.setEmptyView(tvHourlyNoData);
     }
 }
