@@ -1,6 +1,7 @@
 package com.hmelizarraraz.colorweather;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,16 +24,9 @@ public class MinutelyWeatherActivity extends Activity {
         setContentView(R.layout.activity_minutely_weather);
         ButterKnife.bind(this);
 
-        ArrayList<Minute> minutes = new ArrayList<>();
+        Intent intent = getIntent();
 
-        for (int i = 0; i<25; i++) {
-            Minute minute = new Minute();
-
-            minute.setTitle("19.55");
-            minute.setRainProbability(i +"%");
-
-            minutes.add(minute);
-        }
+        ArrayList<Minute> minutes = intent.getParcelableArrayListExtra(MainActivity.MINUTES_ARRAY_LIST);
 
         MinutelyWeatherAdapter minutelyWeatherAdapter = new MinutelyWeatherAdapter(this, minutes);
 

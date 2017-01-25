@@ -46,6 +46,8 @@ public class MainActivity extends Activity {
     public static final String DAYS_ARRAY_LIST = "days";
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final String HOURS_ARRAY_LIST = "hours";
+    public static final String MINUTES_ARRAY_LIST = "MINUTES_ARRAY_LIST";
+    public static final String MINUTELY = "minutely";
 
     @BindView(R.id.imageIcon)
     ImageView imageIcon;
@@ -67,6 +69,7 @@ public class MainActivity extends Activity {
 
     ArrayList<Day> days;
     ArrayList<Hour> hours;
+    ArrayList<Minute> minutes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +91,7 @@ public class MainActivity extends Activity {
                             CurrentWeather currentWeather = getCurrentWeatherFromJSON(response);
                             days = getDailyWeatherFromJSON(response);
                             hours = getHourlyWeatherFromJSON(response);
-                            ArrayList<Minute> minutes = getMinutelyWeatherFromJSON(response);
+                            minutes = getMinutelyWeatherFromJSON(response);
 
                             imageIcon.setImageDrawable(currentWeather.getIconDrawableResource());
                             tvDescriptionText.setText(currentWeather.getDescription());
@@ -132,6 +135,8 @@ public class MainActivity extends Activity {
     @OnClick(R.id.tvMinutely)
     public void minutelyWeatherClik() {
         Intent minutelyActivityIntent = new Intent(MainActivity.this, MinutelyWeatherActivity.class);
+
+        minutelyActivityIntent.putParcelableArrayListExtra(MINUTES_ARRAY_LIST, minutes);
 
         startActivity(minutelyActivityIntent);
     }
@@ -243,7 +248,7 @@ public class MainActivity extends Activity {
 
         dateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
 
-        JSONObject jsonWithMinutelyWeather = jsonObject.getJSONObject("minutely");
+        JSONObject jsonWithMinutelyWeather = jsonObject.getJSONObject(MINUTELY);
         JSONArray jsonWithMinutelyWeatherData = jsonWithMinutelyWeather.getJSONArray(DATA);
 
         for (int i = 0; i<jsonWithMinutelyWeatherData.length(); i++) {
@@ -252,7 +257,7 @@ public class MainActivity extends Activity {
             JSONObject jsonWithMinuteData = jsonWithMinutelyWeatherData.getJSONObject(i);
 
             String minuteTitle = dateFormat.format(jsonWithMinuteData.getDouble(TIME)*1000);
-            String rainProbability = jsonWithMinuteData.getDouble(PRECIP_PROBABILITY) + "";
+            String rainProbability = "Probabilidad de lluvia: " + jsonWithMinuteData.getDouble(PRECIP_PROBABILITY)*100 + "%";
 
             minute.setTitle(minuteTitle);
             minute.setRainProbability(rainProbability);
