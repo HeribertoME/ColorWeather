@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.hmelizarraraz.colorweather.Adapters.MinutelyWeatherAdapter;
 
@@ -18,6 +20,9 @@ public class MinutelyWeatherActivity extends Activity {
     @BindView(R.id.minutelyRecyclerView)
     RecyclerView minutelyRecyclerView;
 
+    @BindView(R.id.tvMinutelyNoData)
+    TextView tvMinutelyNoData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +33,29 @@ public class MinutelyWeatherActivity extends Activity {
 
         ArrayList<Minute> minutes = intent.getParcelableArrayListExtra(MainActivity.MINUTES_ARRAY_LIST);
 
-        MinutelyWeatherAdapter minutelyWeatherAdapter = new MinutelyWeatherAdapter(this, minutes);
+        if (minutes != null && !minutes.isEmpty()){
 
-        minutelyRecyclerView.setAdapter(minutelyWeatherAdapter);
+            tvMinutelyNoData.setVisibility(View.GONE);
+            minutelyRecyclerView.setVisibility(View.VISIBLE);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+            MinutelyWeatherAdapter minutelyWeatherAdapter = new MinutelyWeatherAdapter(this, minutes);
 
-        minutelyRecyclerView.setLayoutManager(layoutManager);
+            minutelyRecyclerView.setAdapter(minutelyWeatherAdapter);
 
-        minutelyRecyclerView.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+
+            minutelyRecyclerView.setLayoutManager(layoutManager);
+
+            minutelyRecyclerView.setHasFixedSize(true);
+        } else {
+
+            // Desplegar tvMinutelyNoData
+            // y volver la recyclerView invisible
+            tvMinutelyNoData.setVisibility(View.VISIBLE);
+            minutelyRecyclerView.setVisibility(View.GONE);
+        }
+
+
 
     }
 }
