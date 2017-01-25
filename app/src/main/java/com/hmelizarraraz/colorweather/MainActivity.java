@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,7 +43,8 @@ public class MainActivity extends Activity {
     public static final String DAILY = "daily";
     public static final String HOURLY = "hourly";
     public static final String TIMEZONE = "timezone";
-    private String TAG = MainActivity.class.getSimpleName();
+    public static final String DAYS_ARRAY_LIST = "days";
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     @BindView(R.id.imageIcon)
     ImageView imageIcon;
@@ -118,7 +118,7 @@ public class MainActivity extends Activity {
     public void dailyWeatherClick () {
         Intent dailyActivityIntent= new Intent(MainActivity.this, DailyWeatherActivity.class);
 
-        dailyActivityIntent.putParcelableArrayListExtra("days", days);
+        dailyActivityIntent.putParcelableArrayListExtra(DAYS_ARRAY_LIST, days);
 
         startActivity(dailyActivityIntent);
     }
@@ -185,7 +185,7 @@ public class MainActivity extends Activity {
 
             JSONObject jsonWithDayData = jsonWithDailyWeatherData.getJSONObject(i);
 
-            String rainProbability = jsonWithDayData.getDouble(PRECIP_PROBABILITY) + "";
+            String rainProbability = "Probabilidad de lluvia: " + jsonWithDayData.getDouble(PRECIP_PROBABILITY)*100 + "%";
             String description = jsonWithDayData.getString(SUMMARY);
             String dayName = dateFormat.format(jsonWithDayData.getDouble(TIME)*1000);
 
