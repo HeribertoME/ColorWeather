@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="@drawable/bg_gradient_blue">
+    tools:background="@drawable/bg_gradient_blue"
+    android:layout_marginBottom="10dp">
 
     <TextView
         android:id="@+id/tvMinutelyListTitle"
@@ -22,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Rain probability: 50%"
+        android:textSize="18dp"
         />
 
 </LinearLayout>

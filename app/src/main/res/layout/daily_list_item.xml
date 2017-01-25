@@ -22,12 +22,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvDailyListDescription"
-        tools:text="Partly Cloudy in the morning" />
+        tools:text="Partly Cloudy in the morning"
+        android:textSize="18dp"/>
 
     <TextView
         style="@style/mainStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvDailyListProbability"
-        tools:text="Rain probability 24%"/>
+        tools:text="Rain probability 24%"
+        android:textSize="18dp"/>
 </LinearLayout>
