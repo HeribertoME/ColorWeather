@@ -20,6 +20,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,7 +59,7 @@ public class MainActivity extends Activity {
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://api.darksky.net/forecast/f679dac969c1ac28556f21f62fd80b9f/19.645625,-98.984991?units=si";
+        String url ="https://api.darksky.net/forecast/f679dac969c1ac28556f21f62fd80b9f/19.645625,-98.984991?units=si&lang=es";
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -65,6 +69,13 @@ public class MainActivity extends Activity {
 
                         try {
                             CurrentWeather currentWeather = getCurrentWeatherFromJSON(response);
+                            ArrayList<Day> days = getDailyWeatherFromJSON(response);
+
+                            for (Day day : days) {
+                                Log.d(TAG, day.getDayName());
+                                Log.d(TAG, day.getRainProbability());
+                                Log.d(TAG, day.getWeatherDescription());
+                            }
 
                             imageIcon.setImageDrawable(currentWeather.getIconDrawableResource());
                             tvDescriptionText.setText(currentWeather.getDescription());
@@ -134,5 +145,35 @@ public class MainActivity extends Activity {
         currentWeather.setLowestTemperature(minTemp);
 
         return currentWeather;
+    }
+
+    private ArrayList<Day> getDailyWeatherFromJSON(String json) throws JSONException {
+
+        DateFormat dateFormat = new SimpleDateFormat("EEEE");
+
+        ArrayList<Day> days = new ArrayList<>();
+
+        JSONObject jsonObject = new JSONObject(json);
+
+        JSONObject jsonWithDailyWeather = jsonObject.getJSONObject("daily");
+        JSONArray jsonWithDailyWeatherData = jsonWithDailyWeather.getJSONArray("data");
+
+        for (int i= 0; i<jsonWithDailyWeatherData.length(); i++) {
+            Day day = new Day();
+
+            JSONObject jsonWithDayData = jsonWithDailyWeatherData.getJSONObject(i);
+
+            String rainProbability = jsonWithDayData.getLong("precipProbability") + "";
+            String description = jsonWithDayData.getString("summary");
+            String dayName = dateFormat.format(jsonWithDayData.getLong("time")*1000);
+
+            day.setDayName(dayName);
+            day.setRainProbability(rainProbability);
+            day.setWeatherDescription(description);
+
+            days.add(day);
+        }
+
+        return days;
     }
 }
