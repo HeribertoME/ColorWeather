@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class HourlyWeatherAdapter extends BaseAdapter {
 
-    private ArrayList<Hour> hours;
-    private Context context;
+    ArrayList<Hour> hours;
+    Context context;
 
     public HourlyWeatherAdapter(Context context, ArrayList<Hour> hours) {
         this.context = context;

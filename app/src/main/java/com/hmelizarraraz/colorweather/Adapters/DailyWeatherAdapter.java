@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class DailyWeatherAdapter extends BaseAdapter {
 
-    private ArrayList<Day> days;
-    private Context context;
+    ArrayList<Day> days;
+    Context context;
 
     public DailyWeatherAdapter (Context context, ArrayList<Day> days) {
         this.context = context;
