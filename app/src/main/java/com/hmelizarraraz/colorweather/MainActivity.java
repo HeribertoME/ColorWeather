@@ -80,7 +80,15 @@ public class MainActivity extends Activity {
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://api.darksky.net/forecast/f679dac969c1ac28556f21f62fd80b9f/37.8267,-122.4233?units=si&lang=es";
+
+        String forecastUrl = "https://api.darksky.net/forecast";
+        String APIKey = "f679dac969c1ac28556f21f62fd80b9f";
+        String latitude = "37.8267";
+        String longitude = "-122.4233";
+        String units = "units=si";
+        String lang = "lang=es";
+
+        String url = forecastUrl + "/" + APIKey + "/" + latitude +"," + longitude + "?" + units + "&" + lang;
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
